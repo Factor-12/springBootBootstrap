@@ -41,13 +41,6 @@ public class UsersController {
         return "user";
     }
 
-    @GetMapping(value = "admin/new")
-    public String newUser(ModelMap model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("roles", userService.getAllRoles());
-        return "newUser";
-    }
-
     @PostMapping(value = "admin/new")
     public String newUser(@ModelAttribute User user,
             @RequestParam(value = "roless") String[] roles) {

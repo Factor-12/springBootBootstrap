@@ -1,7 +1,6 @@
 package ru.fedorov.springbootbootstrap.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final LoginSuccessHandler loginSuccessHandler;
 
     @Autowired
-    public SecurityConfig(@Qualifier("userServiceImpl") UserDetailsService userDetailsService,
+    public SecurityConfig(UserDetailsService userDetailsService,
             LoginSuccessHandler loginSuccessHandler) {
         this.userDetailsService = userDetailsService;
         this.loginSuccessHandler = loginSuccessHandler;

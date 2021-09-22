@@ -3,8 +3,6 @@ package ru.fedorov.springbootbootstrap.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.fedorov.springbootbootstrap.dao.RoleRepository;
@@ -58,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findOneWithRoles(email);
     }
 
     @Override
@@ -69,14 +67,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = getByEmail(s);
-        if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' not found", s));
-        }
-        return user;
     }
 }

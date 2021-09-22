@@ -1,11 +1,10 @@
 package ru.fedorov.springbootbootstrap.service;
 
 import java.util.List;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import ru.fedorov.springbootbootstrap.model.Role;
 import ru.fedorov.springbootbootstrap.model.User;
 
-public interface UserService extends UserDetailsService {
+public interface UserService {
 
     List<User> getAllUsers();
 
